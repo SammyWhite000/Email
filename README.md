@@ -8,7 +8,7 @@ This project accomplished just that.
 
 ## How to use program
 Overall Instructions:
-1. Find if you want to send or delete emails, files are named appropriately
+1. Determine if you want to send or delete emails, files are named appropriately
 2. Next, this project only works if you have an "App Password" setup with Google
     * You can set one up at https://myaccount.google.com/security
     * If that still doesn't make sense here is another link with instrucitons: https://support.google.com/mail/answer/185833?hl=en-GB
