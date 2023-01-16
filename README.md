@@ -6,7 +6,7 @@
 
 This project accomplished just that.
 
-## How to use
+## How to use program
 Overall Instructions:
 1. Find if you want to send or delete emails, files are named appropriately
 2. Next, this project only works if you have an "App Password" setup with Google
