@@ -1,41 +1,23 @@
 import imaplib
 import threading
 
-set = {'info@seekdiscomfort.com', 'venmo@venmo.com', 'oldnavy@email.oldnavy.com', '1800usbanks@notifications.usbank.com', 
-'security@mail.instagram.com', 'noreply@steampowered.com', 
-'TurboTax@em1.turbotax.intuit.com', 'no-reply@accounts.google.com', 'BestBuy@email.bestbuy.com', 'learn@itr.mail.codecademy.com', 'jobalerts-noreply@linkedin.com', 
-'notifications@github.com', 'vailresorts@express.medallia.com', 'whitesammyt@gmail.com'}
+# input the exact emails you want to be removed from your inbox in the set
+emailsToBeRemoved = {} # All Emails put into this set will be completely removed from your inbox
 
-def delEmail(who):
-    inbox = imaplib.IMAP4_SSL('imap.gmail.com')
+def startThreads():
 
-    #inbox.login('whitesammyt@gmail.com', '')
-    inbox.login('sammytwhite9@gmail.com', '')
-    inbox.select("Inbox")
-    #whoFrom = 'NOT BODY "Lockheed"'
-    whoFrom = 'BEFORE "29-NOV-2022"'
-    #whoFrom = 'ALL'
-    typ, data = inbox.search(None, whoFrom)
-    for x in data[0].split():
-        inbox.store(x, '+FLAGS', '\\Deleted')
-    print("Done")
-    inbox.expunge()
-    inbox.close()
-    inbox.logout()
-
-def main():
-
+    whoFrom = 'ALL'
     # creating thread
-    arg = set.pop()
+    arg = emailsToBeRemoved.pop()
     t1 = threading.Thread(target=delEmail, args=(arg,))
 
-    arg1 = set.pop()
+    arg1 = emailsToBeRemoved.pop()
     t2 = threading.Thread(target=delEmail, args=(arg1,))
 
-    arg2 = set.pop()
+    arg2 = emailsToBeRemoved.pop()
     t3 = threading.Thread(target=delEmail, args=(arg2,))
 
-    arg3 = set.pop()
+    arg3 = emailsToBeRemoved.pop()
     t4 = threading.Thread(target=delEmail, args=(arg3,))
     t5 = threading.Thread(target=delEmail, args=(arg3,))
     t6 = threading.Thread(target=delEmail, args=(arg3,))
@@ -53,5 +35,25 @@ def main():
     t4.join()
     t5.join()
     t6.join()
+
+def delEmail(who):
+    inbox = imaplib.IMAP4_SSL('imap.gmail.com')
+
+    #inbox.login('whitesammyt@gmail.com', '')
+    inbox.login('sammytwhite9@gmail.com', '')
+    inbox.select("Inbox")
+    #whoFrom = 'NOT BODY "Lockheed"'
+    whoFrom = 'BEFORE "29-NOV-2022"'
+    
+    typ, data = inbox.search(None, whoFrom)
+    for x in data[0].split():
+        inbox.store(x, '+FLAGS', '\\Deleted')
+    print("Done")
+    inbox.expunge()
+    inbox.close()
+    inbox.logout()
+
+def main():
+    mainMenu()
 
 main()
