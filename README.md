@@ -34,5 +34,16 @@ Overall Instructions:
     * python3 sendEmails.py
 
 ## Instructions For Deleting Emails
-
-1
+1. There are three variables that need to be filled in the program, they should be named:
+    * email
+    * password
+    * searchCriteria
+2. Fill the 'email' variable with the email address of the account you want to login to
+    * This will also be the email address that all messages are deleted from
+3. Fill in the 'password' variable with the password of that account
+    * Remember to use the app password you should have created above instead of the Google account password
+4. Next, fill in the 'searchCriteria' varaible in the mainMenu function
+    * This is the criteria the program will use to delete emails. Anything that matches that criteria will be deleted.
+    * Here is a website the lists all the different keywords the cirteria could use:
+        * https://gist.github.com/martinrusev/6121028
+    * By default, this program will delete any emails from the: 'no-reply@accounts.google.com' account
