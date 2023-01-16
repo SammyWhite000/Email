@@ -26,5 +26,8 @@ Instructions For Sending Emails
     * Rememebr to use the app password you should have created above instead of the Google account password
 4. Finally, the 'to' variable is the email address that will be receiving these emails. Use whoevers email you would like 
 
+5. Next, change the number in the loop on line 18 to your own liking. 
+    * This will change the number of emails sent. By default it is 20
+
 4. Next run the program with the following command
     * python3 sendEmails.py
