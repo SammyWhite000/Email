@@ -16,16 +16,16 @@ def sendMessage(email, password, receiver):
     s.starttls()
     s.login(email,password)                     # Login to senders email 
     for x in range(20):                         # Number of Emails to send
-        message = randMessage()                 # Generate random body paragraph w/ subject
+        message = randMessage()                 # Generate random body paragraph with subject
         s.sendmail(email, receiver, message)    # Send the mail
     s.quit()
 
 # Generate Random Body Paragraph With Random Subject
 def randMessage():
     returnMessage = ''
-    subject =random.choice(possibleSubjects) 
-    for x in range(50):
-        returnMessage += random.choice(possibleCharacters)
-    return 'Subject: {}\n\n{}'.format(subject , returnMessage) 
+    subject =random.choice(possibleSubjects)    # Chose random subject 
+    for x in range(700):                        # Number of characters in message body 
+        returnMessage += random.choice(possibleCharacters)  # Add each random character to string
+    return 'Subject: {}\n\n{}'.format(subject , returnMessage)  # Return Message with Subect
 
 main()
