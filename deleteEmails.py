@@ -11,7 +11,7 @@ def main():
     mainMenu(email, password)
 
 def mainMenu(email, password):
-    searchCriteria = 'FROM "whitesammyt@gmail.com"'
+    searchCriteria = 'FROM "whitesammyt@gmail.com"' # Look at READMe for more search Criterias
     threadTuple = createThreads(email,password, searchCriteria)
     startThreads(threadTuple)
 
