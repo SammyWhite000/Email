@@ -4,56 +4,55 @@ import threading
 # input the exact emails you want to be removed from your inbox in the set
 emailsToBeRemoved = {} # All Emails put into this set will be completely removed from your inbox
 
-def startThreads():
+def main():
+    print("Welcome to email Deleter!")
+    email = 'whitesammyt@gmail.com'
+    password = ''
+    mainMenu(email, password)
 
-    whoFrom = 'ALL'
-    # creating thread
-    arg = emailsToBeRemoved.pop()
-    t1 = threading.Thread(target=delEmail, args=(arg,))
+def mainMenu(email, password):
+    searchCriteria = 'FROM "whitesammyt@gmail.com"'
+    threadTuple = createThreads(email,password, searchCriteria)
+    startThreads(threadTuple)
 
-    arg1 = emailsToBeRemoved.pop()
-    t2 = threading.Thread(target=delEmail, args=(arg1,))
+# creating threads then return a tuple of them
+def createThreads(email, password, searchCriteria):
 
-    arg2 = emailsToBeRemoved.pop()
-    t3 = threading.Thread(target=delEmail, args=(arg2,))
+    t1 = threading.Thread(target=markEmails, args=(email, password, searchCriteria,))
+    t2 = threading.Thread(target=markEmails, args=(email, password, searchCriteria,))
+    t3 = threading.Thread(target=markEmails, args=(email, password, searchCriteria,))
+    t4 = threading.Thread(target=markEmails, args=(email, password, searchCriteria,))
+    t5 = threading.Thread(target=markEmails, args=(email, password, searchCriteria,))
+    t6 = threading.Thread(target=markEmails, args=(email, password, searchCriteria,))
 
-    arg3 = emailsToBeRemoved.pop()
-    t4 = threading.Thread(target=delEmail, args=(arg3,))
-    t5 = threading.Thread(target=delEmail, args=(arg3,))
-    t6 = threading.Thread(target=delEmail, args=(arg3,))
+    return (t1,t2,t3,t4,t5,t6) 
 
-    t1.start()
-    t2.start()
-    t3.start()
-    t4.start() 
-    t5.start() 
-    t6.start() 
+def startThreads(threads):
+    # Start each thread then wait for each thread to be finished executing
+    threads[0].start()
+    threads[1].start()
+    threads[2].start()
+    threads[3].start()
+    threads[4].start()
+    threads[5].start()
 
-    t1.join()
-    t2.join()
-    t3.join()
-    t4.join()
-    t5.join()
-    t6.join()
+    threads[0].join()
+    threads[1].join()
+    threads[2].join()
+    threads[3].join()
+    threads[4].join()
+    threads[5].join()
 
-def delEmail(who):
+# Go through inbox, mark each email that meets searchCriteria, then delete all marked emails
+def markEmails(email, password, searchCriteria):
     inbox = imaplib.IMAP4_SSL('imap.gmail.com')
-
-    #inbox.login('whitesammyt@gmail.com', '')
-    inbox.login('sammytwhite9@gmail.com', '')
+    inbox.login(email, password) 
     inbox.select("Inbox")
-    #whoFrom = 'NOT BODY "Lockheed"'
-    whoFrom = 'BEFORE "29-NOV-2022"'
-    
-    typ, data = inbox.search(None, whoFrom)
+    typ, data = inbox.search(None, searchCriteria)
     for x in data[0].split():
         inbox.store(x, '+FLAGS', '\\Deleted')
-    print("Done")
     inbox.expunge()
     inbox.close()
     inbox.logout()
-
-def main():
-    mainMenu()
 
 main()
