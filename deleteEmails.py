@@ -6,12 +6,14 @@ emailsToBeRemoved = {} # All Emails put into this set will be completely removed
 
 def main():
     print("Welcome to email Deleter!")
-    email = 'whitesammyt@gmail.com'
+    email = ''
     password = ''
     mainMenu(email, password)
 
 def mainMenu(email, password):
-    searchCriteria = 'FROM "whitesammyt@gmail.com"' # Look at READMe for more search Criterias
+    # ********************* Change this Variable *********************************
+    searchCriteria = 'FROM "no-reply@accounts.google.com"' # Look at README for more search Criterias
+    # ****************************************************************************
     threadTuple = createThreads(email,password, searchCriteria)
     startThreads(threadTuple)
 
