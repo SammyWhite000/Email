@@ -47,3 +47,5 @@ Overall Instructions:
     * Here is a website the lists all the different keywords the cirteria could use:
         * https://gist.github.com/martinrusev/6121028
     * By default, this program will delete any emails from the: 'no-reply@accounts.google.com' account
+
+* Here is another example of filters for the criteria: https://www.thepythoncode.com/article/deleting-emails-in-python
