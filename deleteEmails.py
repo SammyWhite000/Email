@@ -17,10 +17,9 @@ def mainMenu(email, password):
     # ****************************************************************************
     threadTuple =''
     if searchCriteria == '888':
-        threadTuple = createThreadsSet(email, password)
+        createThreadsWithSet(email, password)
     else:
-        threadTuple = createThreads(email,password, searchCriteria)
-    startThreads(threadTuple)
+        createThreads(email,password, searchCriteria)
 
 # creating threads then return a tuple of them
 def createThreads(email, password, searchCriteria):
@@ -32,19 +31,26 @@ def createThreads(email, password, searchCriteria):
     t5 = threading.Thread(target=markEmails, args=(email, password, searchCriteria,))
     t6 = threading.Thread(target=markEmails, args=(email, password, searchCriteria,))
 
-    return (t1,t2,t3,t4,t5,t6) 
+    startThreads(t1,t2,t3,t4,t5,t6) 
 
-def createThreadsSet(email, password):
-# NEED TO UPDATE
+def createThreadsWithSet(email, password):
     while True:
-        t1 = threading.Thread(target=markEmails, args=(email, password, searchCriteria,))
-        t2 = threading.Thread(target=markEmails, args=(email, password, searchCriteria,))
-        t3 = threading.Thread(target=markEmails, args=(email, password, searchCriteria,))
-        t4 = threading.Thread(target=markEmails, args=(email, password, searchCriteria,))
-        t5 = threading.Thread(target=markEmails, args=(email, password, searchCriteria,))
-        t6 = threading.Thread(target=markEmails, args=(email, password, searchCriteria,))
+        if len(emailsToBeRemoved) == 0:
+            break
+        args = emailsToBeRemoved.pop()
+        t1 = threading.Thread(target=markEmails, args=(email, password, args,))
+        args = emailsToBeRemoved.pop()
+        t2 = threading.Thread(target=markEmails, args=(email, password, args,))
+        args = emailsToBeRemoved.pop()
+        t3 = threading.Thread(target=markEmails, args=(email, password, args,))
+        args = emailsToBeRemoved.pop()
+        t4 = threading.Thread(target=markEmails, args=(email, password, args,))
+        args = emailsToBeRemoved.pop()
+        t5 = threading.Thread(target=markEmails, args=(email, password, args,))
+        args = emailsToBeRemoved.pop()
+        t6 = threading.Thread(target=markEmails, args=(email, password, args,))
 
-        return (t1,t2,t3,t4,t5,t6)
+        startThreads(t1,t2,t3,t4,t5,t6)
 
 def startThreads(threads):
     # Start each thread then wait for each thread to be finished executing
