@@ -20,17 +20,15 @@ Overall Instructions:
 1. There are three variables that need to be filled in the main function, they should be named:
     * email
     * password
-    * to
+    * to   
 2. Fill the 'email' variable with the email address of the account you want to login to
-    * This will also be the email address that all messages are sent from
+    * This will also be the email address that all messages are sent from   
 3. Fill in the 'password' variable with the password of that account
-    * Remember to use the app password you should have created above instead of the Google account password
+    * Remember to use the app password you should have created above instead of the Google account password 
 4. Finally, the 'to' variable is the email address that will be receiving these emails. Use whoevers email you would like 
-
 5. Next, change the number in the loop on line 18 to your own liking. 
     * This will change the number of emails sent. By default it is 20
-
-4. Next run the program with the following command
+4. Next run the program with the following command or run it inside your personal IDE
     * python3 sendEmails.py
 
 ## Instructions For Deleting Emails
