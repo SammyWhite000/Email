@@ -53,7 +53,7 @@ Overall Instructions:
         * This version is used for deleting emails from multiple,very specific sources
         * Example: You want to only delete emails form 'Old Navy', 'Venmo', Your Bank, and 'Instagram' and nothing else 
         1. Find the actual emails for these things in your inbox. For example Old Navy's spam email is: 'oldnavy@email.oldnavy.com'
-        2. Next, go to the top of the program and there should be an empty set. Put each of these emails into that set. Make sure the emails are in quotes!
+        2. Next, go to the top of the program and there should be an empty set. Put each of these emails into that set. Make sure the emails are in quotes! Some default values are already populated in there, feel free to change them
             * ex) emailsToBeRemoved = {'oldnavy@email.oldnavy.com', 'support@venmo.com', 'support@instagram.com'} 
         3. Next, change the 'searchCriteria' variable to: '888'. This will tell the program to use the set as input instead of this variable
             * ex) searchCriteria = '888'

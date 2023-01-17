@@ -2,7 +2,14 @@ import imaplib
 import threading
 
 # input the exact emails you want to be removed from your inbox in the set
-emailsToBeRemoved = {} # All Emails put into this set will be completely removed from your inbox
+emailsToBeRemoved = {
+                        'inmail-hit-reply@linkedin.com', 
+                        'support@instagram.com', 
+                        'Keystone@e.vailresorts.com', 
+                        'oldnavy@email.oldnavy.com', 
+                        'no-reply@accounts.google.com', 
+                        'support@venmo.com'
+                    } # All Emails put into this set will be completely removed from your inbox
 # To use this set, look at 'Version Two' of the deleteEmails section in the README
 
 def main():
@@ -13,7 +20,7 @@ def main():
 
 def mainMenu(email, password):
     # ********************* Change this Variable *********************************
-    searchCriteria = 'FROM "no-reply@accounts.google.com"' # Look at README for more search criterias
+    searchCriteria = 'FROM "no-reply@accounts.google.com"'# Look at README for more search criterias
     # ****************************************************************************
     threadTuple =''
     if searchCriteria == '888':
@@ -31,26 +38,26 @@ def createThreads(email, password, searchCriteria):
     t5 = threading.Thread(target=markEmails, args=(email, password, searchCriteria,))
     t6 = threading.Thread(target=markEmails, args=(email, password, searchCriteria,))
 
-    startThreads(t1,t2,t3,t4,t5,t6) 
+    startThreads((t1,t2,t3,t4,t5,t6)) 
 
 def createThreadsWithSet(email, password):
     while True:
         if len(emailsToBeRemoved) == 0:
             break
         args = emailsToBeRemoved.pop()
-        t1 = threading.Thread(target=markEmails, args=(email, password, args,))
+        t1 = threading.Thread(target=markEmails, args=(email, password, 'FROM ' + args,))
         args = emailsToBeRemoved.pop()
-        t2 = threading.Thread(target=markEmails, args=(email, password, args,))
+        t2 = threading.Thread(target=markEmails, args=(email, password, 'FROM ' + args,))
         args = emailsToBeRemoved.pop()
-        t3 = threading.Thread(target=markEmails, args=(email, password, args,))
+        t3 = threading.Thread(target=markEmails, args=(email, password, 'FROM ' + args,))
         args = emailsToBeRemoved.pop()
-        t4 = threading.Thread(target=markEmails, args=(email, password, args,))
+        t4 = threading.Thread(target=markEmails, args=(email, password, 'FROM ' + args,))
         args = emailsToBeRemoved.pop()
-        t5 = threading.Thread(target=markEmails, args=(email, password, args,))
+        t5 = threading.Thread(target=markEmails, args=(email, password, 'FROM ' + args,))
         args = emailsToBeRemoved.pop()
-        t6 = threading.Thread(target=markEmails, args=(email, password, args,))
+        t6 = threading.Thread(target=markEmails, args=(email, password, 'FROM ' + args,))
 
-        startThreads(t1,t2,t3,t4,t5,t6)
+        startThreads((t1,t2,t3,t4,t5,t6))
 
 def startThreads(threads):
     # Start each thread then wait for each thread to be finished executing
@@ -76,6 +83,7 @@ def markEmails(email, password, searchCriteria):
     typ, data = inbox.search(None, searchCriteria)
     for x in data[0].split():
         inbox.store(x, '+FLAGS', '\\Deleted')
+    print('Done')
     inbox.expunge()
     inbox.close()
     inbox.logout()
