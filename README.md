@@ -41,8 +41,19 @@ Overall Instructions:
 3. Fill in the 'password' variable with the password of that account
     * Remember to use the app password you should have created above instead of the Google account password
 4. Next, fill in the 'searchCriteria' varaible in the mainMenu function
+    * **There are Two different options to use searchCriteria**
     * This is the criteria the program will use to delete emails. Anything that matches that criteria will be deleted.
     * Here is a website the lists all the different keywords the cirteria could use:
         * https://gist.github.com/martinrusev/6121028
-    * By default, this program will delete any emails from the: 'no-reply@accounts.google.com' account
-    * Here is another example of filters for the criteria: https://www.thepythoncode.com/article/deleting-emails-in-python
+    * Version One: 
+        * By default, this program will delete any emails from the: 'no-reply@accounts.google.com' account
+        * Here is another example of filters for the criteria: https://www.thepythoncode.com/article/deleting-emails-in-python
+        * In this verison you can use any of the search criteria from the website above
+    * Version Two:
+        * This version is used for deleting emails from multiple,very specific sources
+        * Example: You want to only delete emails form 'Old Navy', 'Venmo', Your Bank, and 'Instagram' and nothing else 
+        1. Find the actual emails for these things in your inbox. For example Old Navy's spam email is: 'oldnavy@email.oldnavy.com'
+        2. Next, go to the top of the program and there should be an empty set. Put each of these emails into that set. Make sure the emails are in quotes! Some default values are already populated in there, feel free to change them
+            * ex) emailsToBeRemoved = {'oldnavy@email.oldnavy.com', 'support@venmo.com', 'support@instagram.com'} 
+        3. Next, change the 'searchCriteria' variable to: '888'. This will tell the program to use the set as input instead of this variable
+            * ex) searchCriteria = '888'

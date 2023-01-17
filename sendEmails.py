@@ -6,9 +6,9 @@ possibleCharacters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o
 possibleSubjects = ['one', 'two', 'three', 'four', 'five', 'six']
 
 def main():
-    email = ''             # Email address from where mail will be sent from
-    password = ''                               # Email password where mail will be sent from
-    to = ''                # Who the generated email will be sent to
+    email = ''                      # Email address from where mail will be sent from
+    password = ''   # Email password where mail will be sent from
+    to = ''                         # Who the generated email will be sent to
     sendMessage(email, password, to)
 
 def sendMessage(email, password, receiver):
