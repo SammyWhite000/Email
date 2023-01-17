@@ -3,6 +3,7 @@ import threading
 
 # input the exact emails you want to be removed from your inbox in the set
 emailsToBeRemoved = {} # All Emails put into this set will be completely removed from your inbox
+# To use this set, look at 'Version Two' of the deleteEmails section in the README
 
 def main():
     print("Welcome to email Deleter!")
@@ -12,7 +13,7 @@ def main():
 
 def mainMenu(email, password):
     # ********************* Change this Variable *********************************
-    searchCriteria = 'FROM "no-reply@accounts.google.com"' # Look at README for more search Criterias
+    searchCriteria = 'FROM "no-reply@accounts.google.com"' # Look at README for more search criterias
     # ****************************************************************************
     threadTuple = createThreads(email,password, searchCriteria)
     startThreads(threadTuple)
