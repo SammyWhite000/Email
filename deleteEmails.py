@@ -36,14 +36,15 @@ def createThreads(email, password, searchCriteria):
 
 def createThreadsSet(email, password):
 # NEED TO UPDATE
-    t1 = threading.Thread(target=markEmails, args=(email, password, searchCriteria,))
-    t2 = threading.Thread(target=markEmails, args=(email, password, searchCriteria,))
-    t3 = threading.Thread(target=markEmails, args=(email, password, searchCriteria,))
-    t4 = threading.Thread(target=markEmails, args=(email, password, searchCriteria,))
-    t5 = threading.Thread(target=markEmails, args=(email, password, searchCriteria,))
-    t6 = threading.Thread(target=markEmails, args=(email, password, searchCriteria,))
+    while True:
+        t1 = threading.Thread(target=markEmails, args=(email, password, searchCriteria,))
+        t2 = threading.Thread(target=markEmails, args=(email, password, searchCriteria,))
+        t3 = threading.Thread(target=markEmails, args=(email, password, searchCriteria,))
+        t4 = threading.Thread(target=markEmails, args=(email, password, searchCriteria,))
+        t5 = threading.Thread(target=markEmails, args=(email, password, searchCriteria,))
+        t6 = threading.Thread(target=markEmails, args=(email, password, searchCriteria,))
 
-    return (t1,t2,t3,t4,t5,t6)
+        return (t1,t2,t3,t4,t5,t6)
 
 def startThreads(threads):
     # Start each thread then wait for each thread to be finished executing
